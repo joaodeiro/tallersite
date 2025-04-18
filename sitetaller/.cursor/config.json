@@ -1,0 +1,52 @@
+{
+  "editor": {
+    "formatOnSave": true,
+    "formatOnPaste": true,
+    "defaultFormatter": "prettier"
+  },
+  "typescript": {
+    "enable": true,
+    "strict": true
+  },
+  "javascript": {
+    "enable": true
+  },
+  "react": {
+    "enable": true,
+    "strict": true
+  },
+  "tailwind": {
+    "enable": true
+  },
+  "principles": "./principles.json",
+  "practices": "./practices.json",
+  "guides": "./guides.json",
+  "guidelines": {
+    "component_structure": {
+      "description": "Estrutura de Componentes para Designers",
+      "rules": [
+        "Componentes devem ser pequenos e focados",
+        "Usar Atomic Design como referência",
+        "Manter consistência com o Design System"
+      ]
+    },
+    "code_quality": {
+      "description": "Qualidade de Código para Designers",
+      "rules": [
+        "Manter código limpo e organizado",
+        "Seguir padrões de nomenclatura",
+        "Documentar decisões importantes"
+      ]
+    },
+    "explanation_style": {
+      "description": "Estilo de Explicação para Designers",
+      "rules": [
+        "Usar analogias com ferramentas de design",
+        "Incluir exemplos visuais",
+        "Explicar passo a passo com detalhes",
+        "Focar em aspectos visuais e UX",
+        "Dar contexto sobre comandos do terminal"
+      ]
+    }
+  }
+} 

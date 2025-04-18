@@ -1,0 +1,68 @@
+{
+  "code_practices": {
+    "versioning": {
+      "description": "Controle de Versão para Designers",
+      "rules": [
+        "Commits pequenos e focados (como salvar versões no Figma)",
+        "Mensagens claras e descritivas",
+        "Branches organizados por feature (como páginas no Figma)"
+      ]
+    },
+    "refactoring": {
+      "description": "Refatoração para Designers",
+      "rules": [
+        "Melhorar código existente sem mudar comportamento",
+        "Como redesign sem mudar a experiência do usuário",
+        "Manter dívida técnica sob controle"
+      ]
+    },
+    "documentation": {
+      "description": "Documentação para Designers",
+      "rules": [
+        "README claro e atualizado",
+        "Documentação próxima ao código",
+        "Exemplos práticos e visuais"
+      ]
+    },
+    "task_management": {
+      "description": "Gestão de Tarefas para Designers",
+      "rules": [
+        "Revisar e atualizar tasks.md após cada ação concluída",
+        "Mover tarefas entre seções conforme o progresso",
+        "Manter descrições claras e específicas",
+        "Incluir contexto relevante nas descrições"
+      ]
+    },
+    "design_system": {
+      "description": "Gerenciamento do Design System",
+      "rules": [
+        "Seguir as diretrizes do design-system.md para todos os componentes",
+        "Atualizar automaticamente o design-system.md quando houver mudanças significativas em componentes ou estilos",
+        "Manter consistência visual em todo o projeto",
+        "Documentar variações e exceções ao design system",
+        "Sempre informar cores em formato HEX (#RRGGBB) ao descrever cores"
+      ]
+    }
+  },
+  "naming_conventions": {
+    "components": {
+      "pattern": "PascalCase",
+      "example": "ButtonPrimary, CardProduct"
+    },
+    "files": {
+      "pattern": "kebab-case",
+      "example": "button-primary.tsx, card-product.tsx"
+    },
+    "variables": {
+      "pattern": "camelCase",
+      "example": "primaryButton, productCard"
+    }
+  },
+  "file_organization": {
+    "components": "src/components",
+    "pages": "src/pages",
+    "styles": "src/styles",
+    "assets": "src/assets",
+    "tests": "src/__tests__"
+  }
+} 
