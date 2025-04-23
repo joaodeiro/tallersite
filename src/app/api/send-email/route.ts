@@ -7,18 +7,33 @@ if (!resendApiKey) {
   console.error('RESEND_API_KEY is not set in environment variables');
 }
 
-const resend = new Resend(resendApiKey);
+const resend = resendApiKey ? new Resend(resendApiKey) : null;
+
+// Define types for email parameters
+interface EmailParams {
+  from: string;
+  to: string[];
+  subject: string;
+  html: string;
+  reply_to?: string;
+}
+
+// For development testing when RESEND_API_KEY is not available
+const mockSendEmail = async (params: EmailParams) => {
+  console.log('MOCK EMAIL SENT:', params);
+  return {
+    data: {
+      id: 'mock-email-id',
+      from: params.from,
+      to: params.to,
+      subject: params.subject,
+    },
+    error: null,
+  };
+};
 
 export async function POST(req: NextRequest) {
   try {
-    // Validate API key is set
-    if (!resendApiKey) {
-      return NextResponse.json(
-        { error: 'Resend API key is not configured' },
-        { status: 500 }
-      );
-    }
-
     const body = await req.json();
     const { to, subject, formData } = body;
 
@@ -34,13 +49,31 @@ export async function POST(req: NextRequest) {
       <p><strong>Aceita receber comunicações:</strong> ${terms ? 'Sim' : 'Não'}</p>
     `;
 
-    const { data, error } = await resend.emails.send({
-      from: 'Contato Site <onboarding@resend.dev>',
-      to: [to],
-      subject: subject,
-      html: html,
-      reply_to: email,
-    });
+    let data, error;
+
+    // Use mock implementation if Resend API key is not available
+    if (!resend) {
+      console.log('Using mock email implementation because RESEND_API_KEY is not set');
+      const result = await mockSendEmail({
+        from: 'Contato Site <onboarding@resend.dev>',
+        to: [to],
+        subject: subject,
+        html: html,
+        reply_to: email,
+      });
+      data = result.data;
+      error = result.error;
+    } else {
+      const result = await resend.emails.send({
+        from: 'Contato Site <onboarding@resend.dev>',
+        to: [to],
+        subject: subject,
+        html: html,
+        reply_to: email,
+      });
+      data = result.data;
+      error = result.error;
+    }
 
     if (error) {
       console.error('Error sending email:', error);

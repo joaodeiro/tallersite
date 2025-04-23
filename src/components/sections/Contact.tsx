@@ -5,15 +5,16 @@ import { Label } from "../ui/label";
 import { Checkbox } from "../ui/checkbox";
 import { Textarea } from "../ui/textarea";
 import WhatsAppIcon from "../icons/WhatsAppIcon";
-import { FormEvent, useState } from "react";
+import { FormEvent, useState, useRef } from "react";
 
 const WHATSAPP_URL = "https://wa.me/554898230107";
-const EMAIL = "contato@taller.net.br";
+const EMAIL = "rafael@taller.net.br";
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [error, setError] = useState("");
+  const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -34,8 +35,11 @@ const Contact = () => {
     };
 
     try {
+      // Get the current origin for the API URL
+      const apiUrl = `${window.location.origin}/api/send-email`;
+
       // Send email via API route
-      const response = await fetch('/api/send-email', {
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -48,11 +52,14 @@ const Contact = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Falha ao enviar o email. Por favor, tente novamente.');
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Falha ao enviar o email. Por favor, tente novamente.');
       }
 
-      // Reset form
-      e.currentTarget.reset();
+      // Reset form safely
+      if (formRef.current) {
+        formRef.current.reset();
+      }
       setFormSubmitted(true);
     } catch (error) {
       console.error('Erro ao enviar email:', error);
@@ -182,7 +189,7 @@ const Contact = () => {
                 </Button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div className="space-y-2">
                     <Label htmlFor="name">Nome</Label>
