@@ -42,7 +42,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative overflow-hidden pt-16 md:pt-24 pb-12 md:pb-16">
+    <section className="relative overflow-hidden pt-32 md:pt-40 pb-12 md:pb-16">
       {/* Background effects */}
       <div className="absolute inset-0 -z-10 bg-[#121212]">
         {/* Top right red glow */}
@@ -59,7 +59,7 @@ const Hero = () => {
               <span className="gradient-text block font-bold text-[48px] md:text-[88px] leading-[1.1]">Criando RESULTADO</span>
               <span className="block text-gray-100 text-[24px] md:text-[36px] leading-[1.1] font-semibold">e não apenas produtos.</span>
             </h1>
-            
+
             <p className="text-[#B2C0D4] text-base md:text-lg mb-4 max-w-lg mx-auto lg:mx-0">
               Projeto travado? Devs perdidos? Board cobrando ROI?
               <br />
@@ -68,7 +68,7 @@ const Hero = () => {
             <p className="text-[#B2C0D4] text-base md:text-lg mb-8 max-w-lg mx-auto lg:mx-0">
               Alinhamos negócio, tecnologia e execução para criar <span className="gradient-text font-bold text-[18px] md:text-[20px]">produtos lucrativamente encantadores</span>.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -79,7 +79,7 @@ const Hero = () => {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="start" sideOffset={4} className="w-[520px] bg-[#1e1e1e]/95 backdrop-blur-sm border border-white/5 rounded-xl shadow-xl p-1">
                   <DropdownMenuItem className="rounded-lg focus:bg-white/5">
-                    <a 
+                    <a
                       href={WHATSAPP_URL}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -90,7 +90,7 @@ const Hero = () => {
                     </a>
                   </DropdownMenuItem>
                   <DropdownMenuItem className="rounded-lg focus:bg-white/5">
-                    <a 
+                    <a
                       href="#contato"
                       className="flex items-center w-full px-3 py-2 text-white/90 hover:text-white transition-colors"
                     >
@@ -119,12 +119,12 @@ const Hero = () => {
               </DropdownMenu>
             </div>
           </div>
-          
+
           {/* Dynamic visualization */}
-          <div className="w-full lg:w-1/2 flex justify-center items-center">
+          <div className="hidden md:flex w-full lg:w-1/2 justify-center items-center">
             <div className="relative w-full max-w-2xl aspect-video">
               {/* Grid de quadrados animados */}
-              <div className="absolute inset-0 flex items-center justify-center">
+              <div className="hidden md:block inset-0 items-center justify-center">
                 <div className="grid grid-cols-4 gap-4">
                   {Array(16).fill(0).map((_, index) => (
                     <div
@@ -146,7 +146,7 @@ const Hero = () => {
                   <div className="relative w-32 h-32 md:w-40 md:h-40 z-10">
                     <div className="absolute inset-0 bg-gradient-to-br from-primary to-secondary rounded-full animate-pulse opacity-20"></div>
                     <div className="absolute inset-2 bg-[#121212] rounded-full flex items-center justify-center">
-                      <img src="images/icon-only-white.png" alt="Taller" className="h-16 w-16 md:h-20 md:w-20" />
+                      <img src="images/icon-only-white.png" alt="Taller" className="h-20 w-20 md:h-24 md:w-24" />
                     </div>
                     <div className="absolute inset-0 border-4 border-primary/30 rounded-full animate-spin" style={{animationDuration: '15s'}}></div>
                   </div>

@@ -8,7 +8,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-black text-gray-300">
-      <div className="max-container py-12 md:py-16">
+      <div className="max-container py-12 px-8 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Coluna 1: Sobre */}
           <div>
@@ -20,18 +20,18 @@ const Footer = () => {
               transparência e agilidade.
             </p>
             <div className="flex space-x-4 mt-4">
-              <a 
-                href="https://linkedin.com/company/taller" 
-                target="_blank" 
+              <a
+                href="https://www.linkedin.com/company/tallerteam"
+                target="_blank"
                 rel="noreferrer"
                 aria-label="LinkedIn"
                 className="hover:text-accent transition-colors"
               >
                 <Linkedin size={20} />
               </a>
-              <a 
-                href="https://github.com/taller" 
-                target="_blank" 
+              <a
+                href="https://github.com/TallerWebSolutions"
+                target="_blank"
                 rel="noreferrer"
                 aria-label="Github"
                 className="hover:text-accent transition-colors"
@@ -77,9 +77,9 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <WhatsAppIcon className="h-5 w-5 mr-2 text-[#25D366]" />
-                <a 
-                  href="https://wa.me/554898230107" 
-                  target="_blank" 
+                <a
+                  href="https://wa.me/554898230107"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-accent transition-colors"
                 >
@@ -88,8 +88,8 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <Mail size={18} className="mr-2 text-accent" />
-                <a 
-                  href="mailto:contato@taller.net.br" 
+                <a
+                  href="mailto:contato@taller.net.br"
                   className="hover:text-accent transition-colors"
                 >
                   contato@taller.net.br

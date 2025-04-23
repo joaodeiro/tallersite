@@ -4,7 +4,7 @@ import { COLORS, GRADIENTS, TRANSITIONS } from "@/lib/constants";
 
 const About = () => {
   return (
-    <section className="section-padding relative overflow-hidden bg-[#1a1a1a]">
+    <section className="section-padding relative overflow-hidden bg-[#1a1a1a]" id="sobre">
       <div className="max-container">
         <div className="text-center mb-8 md:mb-12 animate-slideUp opacity-0">
           <h2 className="mb-4 text-2xl md:text-3xl lg:text-4xl text-white">
@@ -27,7 +27,7 @@ const About = () => {
               Seu produto evolui todo dia. Sem exceções. Entregamos melhorias diárias porque sabemos que velocidade é o que separa líderes de mercado dos demais.
             </p>
           </div>
-          
+
           <div className="ai-card flex flex-col items-center text-center transform transition-all duration-500 hover:translate-y-[-10px] hover:shadow-[0_0_30px_rgba(219,34,55,0.2)_,_0_0_30px_rgba(244,127,68,0.2)] bg-[#121212] border border-[#171717] h-full">
             <div className="h-12 w-12 md:h-16 md:w-16 rounded-full bg-[#1e1e1e] flex items-center justify-center mb-4 md:mb-5 relative group">
               <Trophy className="h-6 w-6 md:h-8 md:w-8 text-white group-hover:scale-110 transition-transform" />
@@ -38,7 +38,7 @@ const About = () => {
               Você não contrata um projeto, contrata transformação. A cada ciclo, alinhamos objetivos e métricas para garantir que seu investimento gere resultados reais e mensuráveis.
             </p>
           </div>
-          
+
           <div className="ai-card flex flex-col items-center text-center transform transition-all duration-500 hover:translate-y-[-10px] hover:shadow-[0_0_30px_rgba(219,34,55,0.2)_,_0_0_30px_rgba(244,127,68,0.2)] bg-[#121212] border border-[#171717] h-full">
             <div className="h-12 w-12 md:h-16 md:w-16 rounded-full bg-[#1e1e1e] flex items-center justify-center mb-4 md:mb-5 relative group">
               <Eye className="h-6 w-6 md:h-8 md:w-8 text-white group-hover:scale-110 transition-transform" />
@@ -52,15 +52,15 @@ const About = () => {
         </div>
 
         <div className="mt-12 md:mt-16 text-center">
-          <Button 
-            variant="cta" 
-            size="lg" 
+          <Button
+            variant="cta"
+            size="lg"
             className="group hover:scale-105 transition-transform"
             aria-label="Saiba mais sobre nossa visão"
             onClick={() => {
               const contactSection = document.getElementById('contato');
               if (contactSection) {
-                contactSection.scrollIntoView({ 
+                contactSection.scrollIntoView({
                   behavior: 'smooth',
                   block: 'start'
                 });

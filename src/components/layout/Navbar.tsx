@@ -88,7 +88,7 @@ const Navbar = () => {
         </DropdownMenuTrigger>
         <DropdownMenuContent align="start" sideOffset={4} className="w-[260px] bg-[#1e1e1e]/95 backdrop-blur-sm border border-white/5 rounded-xl shadow-xl p-1">
           <DropdownMenuItem className="rounded-lg focus:bg-white/5">
-            <a 
+            <a
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
@@ -99,7 +99,7 @@ const Navbar = () => {
             </a>
           </DropdownMenuItem>
           <DropdownMenuItem className="rounded-lg focus:bg-white/5">
-            <a 
+            <a
               href="#contato"
               className="flex items-center w-full px-3 py-2 text-white/90 hover:text-white transition-colors"
             >
@@ -139,7 +139,7 @@ const Navbar = () => {
     >
       <div className="max-container flex items-center justify-between">
         {/* Logo */}
-        <Link 
+        <Link
           to="/"
           className="cursor-pointer"
         >

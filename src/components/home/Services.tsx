@@ -54,7 +54,7 @@ const Services = () => {
     <section id="servicos" className="section-padding relative overflow-hidden">
       {/* Background base */}
       <div className="absolute inset-0 bg-[#121212]" />
-      
+
       {/* Efeito de sombra gradiente */}
       <div className="absolute inset-0">
         <div className="absolute -bottom-[300px] -right-[300px] w-[600px] h-[600px] bg-gradient-to-br from-[#DB2337]/20 to-[#F47F44]/20 rounded-full blur-[80px] opacity-100" />
@@ -65,7 +65,7 @@ const Services = () => {
       <div className="relative z-10 max-container">
         <div className="text-center mb-12">
           <h2 className="gradient-text mb-4">Transformando o futuro do trabalho digital</h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg max-w-3xl mx-auto">
             Transformamos desafios em oportunidades com soluções tecnológicas inovadoras.
             Nossa expertise abrange desde desenvolvimento ágil até inteligência artificial avançada.
           </p>
@@ -91,9 +91,9 @@ const Services = () => {
         </div>
 
         <div className="mt-12 md:mt-16 text-center">
-          <a 
-            href="https://wa.me/554898230107" 
-            target="_blank" 
+          <a
+            href="https://wa.me/554898230107"
+            target="_blank"
             rel="noopener noreferrer"
           >
             <Button variant="cta" size="lg" className="group">

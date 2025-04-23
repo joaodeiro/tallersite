@@ -4,6 +4,20 @@
 
 **URL**: https://lovable.dev/projects/23fc68d6-10ef-4123-bb14-37a3cc4b461a
 
+## Email Functionality with Resend
+
+This project uses [Resend](https://resend.com) for sending emails from the contact form. To set it up:
+
+1. Create an account at [Resend](https://resend.com).
+2. Create an API key in your Resend dashboard.
+3. Add the API key to your environment variables:
+   - Create a `.env.local` file in the root directory
+   - Add this line to the file: `RESEND_API_KEY=your_api_key_here`
+4. Install the Resend package:
+   ```sh
+   npm install resend
+   ```
+
 ## How can I edit this code?
 
 There are several ways of editing your application.
