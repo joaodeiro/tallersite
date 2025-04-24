@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Phone, Code2, Sparkles, Boxes, Lightbulb, BookOpen, Puzzle, Rocket, HandshakeIcon, Search, ChevronDown, Mail } from "lucide-react";
 import { Button } from "../ui/button";
 import WhatsAppIcon from "../icons/WhatsAppIcon";
@@ -9,6 +9,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { ArrowRight } from "lucide-react";
 
 const serviceItems = [
   {
@@ -73,20 +75,27 @@ const Services = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {serviceItems.map((item, index) => (
-            <div
-              key={index}
-              className="ai-card flex flex-col p-6 md:p-8 transform transition-all duration-500 hover:translate-y-[-10px] hover:shadow-[0_0_40px_rgba(219,34,55,0.15)_,_0_0_40px_rgba(244,127,68,0.15)] bg-[#1a1a1a] border border-[#1d1d1d] rounded-lg backdrop-blur-sm relative group"
-            >
-              <div className="h-12 w-12 md:h-16 md:w-16 rounded-full bg-[#121212] flex items-center justify-center mb-4 md:mb-5 relative transition-transform duration-300 group-hover:scale-110">
-                {item.icon}
-                <div
-                  className="absolute inset-0 border border-primary/30 rounded-full animate-ping opacity-80"
-                  style={{ animationDelay: `${index * 0.2}s` }}
-                />
-              </div>
-              <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 gradient-text transition-colors duration-300">{item.title}</h3>
-              <p className="text-sm md:text-base text-gray-300/90 transition-colors duration-300 group-hover:text-gray-200">{item.description}</p>
-            </div>
+            <Card key={index} className="bg-[#1e1e1e] border-white/5 hover:border-white/10 transition-all duration-300">
+              <CardHeader>
+                <div className="bg-gradient-to-r from-[#DB2237] to-[#F47F44] w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                  {item.icon}
+                </div>
+                <CardTitle className="text-xl font-semibold text-white">
+                  {item.title}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-gray-400 mb-4">
+                  {item.description}
+                </CardDescription>
+                <Link href="#contato" className="inline-block">
+                  <Button variant="secondary" className="text-[#F47F44] hover:text-[#F47F44]/90 p-0 h-auto font-semibold">
+                    Saiba mais
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
           ))}
         </div>
 

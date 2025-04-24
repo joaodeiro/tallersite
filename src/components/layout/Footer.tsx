@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Mail, MapPin, Linkedin, Github } from "lucide-react";
 import WhatsAppIcon from "../icons/WhatsAppIcon";
 
@@ -7,110 +7,69 @@ const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-black text-gray-300">
-      <div className="max-container py-12 px-8 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Coluna 1: Sobre */}
-          <div>
-            <div className="mb-4">
-              <img src="images/logo.png" alt="Taller" className="h-16" />
-            </div>
-            <p className="mb-4">
-              Desenvolvemos soluções inteligentes personalizadas com foco em inovação,
-              transparência e agilidade.
+    <footer className="bg-[#121212] text-gray-300 py-8 mt-auto">
+      <div className="max-container">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Logo and Description */}
+          <div className="space-y-4">
+            <Link href="/" className="inline-block">
+              <img src="/images/logo.png" alt="Taller" className="h-16 transition-transform duration-300 hover:scale-105" />
+            </Link>
+            <p className="text-sm text-gray-400">
+              Soluções em tecnologia para seu negócio
             </p>
-            <div className="flex space-x-4 mt-4">
-              <a
-                href="https://www.linkedin.com/company/tallerteam"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn"
-                className="hover:text-accent transition-colors"
-              >
-                <Linkedin size={20} />
-              </a>
-              <a
-                href="https://github.com/TallerWebSolutions"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Github"
-                className="hover:text-accent transition-colors"
-              >
-                <Github size={20} />
-              </a>
-            </div>
           </div>
 
-          {/* Coluna 2: Links Rápidos */}
+          {/* Quick Links */}
           <div>
-            <h4 className="font-heading text-xl font-semibold mb-4 text-white">
-              Links Rápidos
-            </h4>
+            <h3 className="text-lg font-semibold mb-4">Links Rápidos</h3>
             <ul className="space-y-2">
-              {[
-                { name: "Home", path: "#home" },
-                { name: "Sobre", path: "#sobre" },
-                { name: "Serviços", path: "#servicos" },
-                { name: "Contato", path: "#contato" },
-              ].map((item) => (
-                <li key={item.name}>
-                  <a
-                    href={item.path}
-                    className="hover:text-accent transition-colors"
-                  >
-                    {item.name}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <a href="#home" className="text-sm text-gray-400 hover:text-white transition-colors">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="#sobre" className="text-sm text-gray-400 hover:text-white transition-colors">
+                  Sobre
+                </a>
+              </li>
+              <li>
+                <a href="#servicos" className="text-sm text-gray-400 hover:text-white transition-colors">
+                  Serviços
+                </a>
+              </li>
+              <li>
+                <a href="#contato" className="text-sm text-gray-400 hover:text-white transition-colors">
+                  Contato
+                </a>
+              </li>
             </ul>
           </div>
 
-          {/* Coluna 3: Contato */}
+          {/* Contact Info */}
           <div>
-            <h4 className="font-heading text-xl font-semibold mb-4 text-white">
-              Contato
-            </h4>
-            <ul className="space-y-3">
-              <li className="flex items-center">
-                <MapPin size={18} className="mr-2 text-accent" />
-                <span>Florianópolis, SC, Brasil</span>
-              </li>
-              <li className="flex items-center">
-                <WhatsAppIcon className="h-5 w-5 mr-2 text-[#25D366]" />
-                <a
-                  href="https://wa.me/554898230107"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-accent transition-colors"
-                >
-                  +55 (48) 98230-0107
+            <h3 className="text-lg font-semibold mb-4">Contato</h3>
+            <ul className="space-y-2">
+              <li className="text-sm text-gray-400">
+                <a href="https://wa.me/554898230107" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                  WhatsApp: (48) 98230-107
                 </a>
               </li>
-              <li className="flex items-center">
-                <Mail size={18} className="mr-2 text-accent" />
-                <a
-                  href="mailto:contato@taller.net.br"
-                  className="hover:text-accent transition-colors"
-                >
-                  contato@taller.net.br
+              <li className="text-sm text-gray-400">
+                <a href="mailto:contato@taller.com.br" className="hover:text-white transition-colors">
+                  Email: contato@taller.com.br
                 </a>
               </li>
             </ul>
           </div>
         </div>
 
-        <hr className="border-gray-800 my-8" />
-
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <p>&copy; {year} Taller. Todos os direitos reservados.</p>
-          <div className="mt-4 md:mt-0">
-            <Link to="/politica-de-privacidade" className="mr-4 hover:text-accent transition-colors">
-              Política de Privacidade
-            </Link>
-            <Link to="/termos-de-uso" className="hover:text-accent transition-colors">
-              Termos de Uso
-            </Link>
-          </div>
+        {/* Copyright */}
+        <div className="border-t border-gray-800 mt-8 pt-8 text-center">
+          <p className="text-sm text-gray-400">
+            © {year} Taller. Todos os direitos reservados.
+          </p>
         </div>
       </div>
     </footer>

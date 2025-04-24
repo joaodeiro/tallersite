@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { Link } from "react-router-dom";
-import { Menu, X, ChevronDown, Mail } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import WhatsAppIcon from "../icons/WhatsAppIcon";
+import { isClient } from "@/lib/utils";
+import Link from "next/link";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -30,12 +31,16 @@ const Navbar = () => {
 
   // Memoização da função de scroll
   const handleScroll = useCallback(() => {
-    setScrolled(window.scrollY > SCROLL_THRESHOLD);
+    if (isClient) {
+      setScrolled(window.scrollY > SCROLL_THRESHOLD);
+    }
   }, []);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    if (isClient) {
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    }
   }, [handleScroll]);
 
   // Componente do item de navegação para desktop
@@ -71,7 +76,7 @@ const Navbar = () => {
           variant="cta"
           size="lg"
           className="w-full"
-          onClick={() => window.location.href = WHATSAPP_URL}
+          onClick={() => isClient && (window.location.href = WHATSAPP_URL)}
         >
           Falar com especialista
         </Button>
@@ -140,7 +145,7 @@ const Navbar = () => {
       <div className="max-container flex items-center justify-between">
         {/* Logo */}
         <Link
-          to="/"
+          href="/"
           className="cursor-pointer"
         >
           <img src="/images/logo.png" alt="Taller" className="h-16 md:h-16 transition-transform duration-300 hover:scale-105" />

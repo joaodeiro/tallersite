@@ -7,7 +7,6 @@ import Resources from "@/components/sections/Resources";
 import Contact from "@/components/sections/Contact";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import RouterProvider from "@/components/RouterProvider";
 import { useState, useEffect } from "react";
 
 export default function Home() {
@@ -23,18 +22,16 @@ export default function Home() {
   }
 
   return (
-    <RouterProvider>
-      <div className="min-h-screen flex flex-col" id="home">
-        <Navbar />
-        <main>
-          <Hero />
-          <About />
-          <Services />
-          <Resources />
-          <Contact />
-        </main>
-        <Footer />
-      </div>
-    </RouterProvider>
+    <div className="min-h-screen flex flex-col" id="home">
+      <Navbar />
+      <main>
+        <Hero />
+        <About />
+        <Services />
+        <Resources />
+        <Contact />
+      </main>
+      <Footer />
+    </div>
   );
 }
