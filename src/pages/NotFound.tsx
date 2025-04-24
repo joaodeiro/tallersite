@@ -1,16 +1,16 @@
-import { useLocation } from "react-router-dom";
+import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
-// Client-side component that uses router hooks
+// Client-side component that uses Next.js hooks
 const ClientNotFound = () => {
-  const location = useLocation();
+  const pathname = usePathname();
 
   useEffect(() => {
     console.error(
       "404 Error: User attempted to access non-existent route:",
-      location.pathname
+      pathname
     );
-  }, [location.pathname]);
+  }, [pathname]);
 
   return <NotFoundContent />;
 };
