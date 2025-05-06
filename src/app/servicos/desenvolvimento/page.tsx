@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, useCallback, useMemo } from "react";
-import { ChevronDown, Search, Users, Lightbulb, Target, Code, Zap, Calendar, Rocket, LineChart } from "lucide-react";
+import { ChevronDown, Search, Users, Lightbulb, Target, Code, Zap, Calendar, Rocket, LineChart, Move, Banknote, Gem, Eye, Compass } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import ClientLogosMinimal from "@/components/home/ClientLogosMinimal";
@@ -39,7 +39,7 @@ function ProcessStep({
   imageRight = false
 }) {
   return (
-    <div className={`flex flex-col lg:flex-row items-center gap-8 lg:gap-12 mb-24 ${imageRight ? 'lg:flex-row-reverse' : ''}`} style={{columnGap: '3rem'}}>
+    <div className={`flex flex-col lg:flex-row items-center gap-8 lg:gap-12 ${imageRight ? 'lg:flex-row-reverse' : ''}`} style={{columnGap: '3rem', marginBottom: '160px'}}>
       {/* Imagem */}
       <div className="w-full lg:w-1/2 flex justify-center items-center mb-8 lg:mb-0">
         <img
@@ -61,7 +61,7 @@ function ProcessStep({
                 {card.icon}
               </div>
               <div>
-                <h4 className="font-semibold mb-1 text-white">{card.title}</h4>
+                <h4 className="font-semibold mb-1 gradient-text">{card.title}</h4>
                 <p className="text-gray-200 text-sm">{card.text}</p>
               </div>
             </div>
@@ -74,7 +74,7 @@ function ProcessStep({
 
 export default function ServicosDesenvolvimento() {
   return (
-    <div className="overflow-x-hidden w-full">
+    <div className="w-full">
       <ServicosDesenvolvimentoContent />
     </div>
   );
@@ -179,7 +179,7 @@ function ServicosDesenvolvimentoContent() {
 
   // Memoize o componente de partículas para evitar re-renders desnecessários
   const ParticlesComponent = useMemo(() => (
-    <div className="absolute inset-0" style={{ zIndex: 1 }}>
+    <div className="absolute inset-0 overflow-hidden" style={{ zIndex: 1 }}>
       {particles.map((particle, i) => {
         const age = Date.now() - particle.birth;
         const lifeProgress = age / particle.lifespan;
@@ -190,8 +190,8 @@ function ServicosDesenvolvimentoContent() {
             key={i}
             className="absolute w-2 h-2 bg-gradient-to-br from-[#DB2337] to-[#F47F44] rounded-full"
             style={{
-              left: `${particle.x}%`,
-              top: `${particle.y}%`,
+              left: `${Math.max(0, Math.min(100, particle.x))}%`,
+              top: `${Math.max(0, Math.min(100, particle.y))}%`,
               opacity: fadeOut * 0.8,
               width: `${8 * particle.size}px`,
               height: `${8 * particle.size}px`,
@@ -534,15 +534,24 @@ function ServicosDesenvolvimentoContent() {
 
       {/* Processo Section */}
       <section className="relative z-10 py-20 text-white overflow-x-hidden" style={{overflow: 'visible', height: 'auto'}}>
+        {/* Gradiente para ícones dos cards */}
+        <svg width="0" height="0">
+          <defs>
+            <linearGradient id="icon-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#DB2337" />
+              <stop offset="100%" stopColor="#F47F44" />
+            </linearGradient>
+          </defs>
+        </svg>
         {/* Fundo absoluto igual ao da hero section */}
-        <div className="absolute inset-0 w-full h-full bg-[#121212]" style={{zIndex: 0}} />
+        <div className="absolute inset-0 w-full bg-[#121212]" style={{zIndex: 0}} />
         {/* Gradientes da hero section */}
         <div className="absolute inset-0 -z-10">
           <div className="absolute top-0 right-0 w-[600px] md:w-[800px] h-[600px] md:h-[800px] bg-gradient-to-br from-primary/10 to-secondary/10 rounded-full blur-3xl" />
           <div className="absolute -bottom-[300px] md:-bottom-[400px] -left-[300px] md:-left-[400px] w-[600px] md:w-[800px] h-[600px] md:h-[800px] bg-gradient-to-br from-primary/10 to-secondary/10 rounded-full blur-3xl" />
         </div>
         {/* Partículas entre o fundo e o conteúdo */}
-        <div className="absolute inset-0 w-full h-full pointer-events-none" style={{zIndex: 1}}>
+        <div className="absolute inset-0 w-full pointer-events-none" style={{zIndex: 1}}>
           {ParticlesComponent}
         </div>
         <div className="max-container relative" style={{zIndex: 2, overflow: 'visible', height: 'auto'}}>
@@ -557,13 +566,11 @@ function ServicosDesenvolvimentoContent() {
             imageSrc="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80"
             imageAlt="Etapa de Descoberta"
             badge="O jeito Taller de fazer"
-            title="Seu produto evoluindo TODO DIA"
-            description="Mergulhamos profundamente no seu negócio para entender objetivos, desafios e oportunidades. Esta fase é crucial para alinhar expectativas e definir o escopo inicial do projeto."
+            title="Produto evoluindo TODO DIA"
+            description={<>Tenha entregas de software todos os dias.<br />Integramos pesquisa, design e desenvolvimento em ciclos curtos e dinâmicos, alinhando as necessidades do negócio com as expectativas dos usuários — entregando valor constante.<br />Valor prático, todo dia.</>}
             cards={[
-              { icon: <Search className="h-6 w-6 text-blue-400" />, title: "Análise de requisitos", text: "Levantamento detalhado das necessidades" },
-              { icon: <Users className="h-6 w-6 text-blue-400" />, title: "Workshop com stakeholders", text: "Sessões colaborativas de ideação" },
-              { icon: <Lightbulb className="h-6 w-6 text-blue-400" />, title: "Prototipação", text: "Visualização inicial da solução" },
-              { icon: <Target className="h-6 w-6 text-blue-400" />, title: "Planejamento estratégico", text: "Definição de prioridades e milestones" }
+              { icon: <Zap className="h-6 w-6" stroke="url(#icon-gradient)" />, title: "Agilidade", text: "Processos realmente ágeis, entregas rápidas e impacto constante." },
+              { icon: <Move className="h-6 w-6" stroke="url(#icon-gradient)" />, title: "Flexibilidade", text: "Adaptação contínua às necessidades do negócio e dos usuários." }
             ]}
           />
 
@@ -574,12 +581,10 @@ function ServicosDesenvolvimentoContent() {
             imageRight
             badge="O jeito Taller de fazer"
             title="Um alvo: RESULTADO"
-            description="É nesta fase que transformamos conceitos em código. Com ciclos curtos de desenvolvimento e entregas diárias, você acompanha a evolução do seu projeto em tempo real."
+            description={<>Cada entrega existe para mover o ponteiro do seu negócio.<br />Decidimos com dados, agimos com foco na cadeia de valor e conectamos cada etapa aos objetivos que realmente importam.<br /><br />O resultado? Produtos que resolvem problemas LUCRANDO.</>}
             cards={[
-              { icon: <Code className="h-6 w-6 text-indigo-400" />, title: "Desenvolvimento ágil", text: "Sprints curtos com entregas frequentes" },
-              { icon: <Zap className="h-6 w-6 text-indigo-400" />, title: "Testes automatizados", text: "Garantia de qualidade contínua" },
-              { icon: <Calendar className="h-6 w-6 text-indigo-400" />, title: "Reuniões diárias", text: "Alinhamento frequente de progresso" },
-              { icon: <Rocket className="h-6 w-6 text-indigo-400" />, title: "Integração contínua", text: "Ambiente sempre atualizado" }
+              { icon: <Rocket className="h-6 w-6" stroke="url(#icon-gradient)" />, title: "Foco no ROI", text: "Ação baseada em dados. Estratégia de ponta para Produtos fora da curva." },
+              { icon: <Gem className="h-6 w-6" stroke="url(#icon-gradient)" />, title: "Valor que fala", text: "Entregue o que seu cliente realmente precisa." }
             ]}
           />
 
@@ -589,12 +594,10 @@ function ServicosDesenvolvimentoContent() {
             imageAlt="Etapa de Delivery"
             badge="O jeito Taller de fazer"
             title="Transparência TOTAL"
-            description="Não apenas entregamos software, mas garantimos que ele seja implementado com sucesso e traga os resultados esperados para seu negócio, com suporte contínuo."
+            description={<>Gestão completa do seu projeto, sem surpresas. Cada hora, cada custo, cada entrega. Com software sob demanda, garantimos sua visibilidade de todas as etapas em tempo real.<br /><br />Você no comando.</>}
             cards={[
-              { icon: <Rocket className="h-6 w-6 text-purple-400" />, title: "Implementação gradual", text: "Lançamentos controlados e seguros" },
-              { icon: <Users className="h-6 w-6 text-purple-400" />, title: "Treinamento de usuários", text: "Capacitação para uso efetivo" },
-              { icon: <LineChart className="h-6 w-6 text-purple-400" />, title: "Monitoramento", text: "Análise contínua de desempenho" },
-              { icon: <Zap className="h-6 w-6 text-purple-400" />, title: "Melhoria contínua", text: "Evolução constante da solução" }
+              { icon: <Eye className="h-6 w-6" stroke="url(#icon-gradient)" />, title: "Software sob Demanda", text: "Controle cada centavo investido e defina o rumo do seu Produto" },
+              { icon: <Compass className="h-6 w-6" stroke="url(#icon-gradient)" />, title: "Visão de futuro", text: "Acompanhe cada passo sem perder o destino. Saiba sempre onde seu projeto está e para onde vai." }
             ]}
           />
 
