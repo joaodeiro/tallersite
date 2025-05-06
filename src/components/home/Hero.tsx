@@ -125,7 +125,7 @@ const Hero = () => {
             <div className="relative w-full max-w-2xl aspect-video">
               {/* Grid de quadrados animados */}
               <div className="hidden md:block inset-0 items-center justify-center">
-                <div className="grid grid-cols-4 gap-4">
+                <div className="grid grid-cols-4 gap-3 max-w-[412px] mx-auto">
                   {Array(16).fill(0).map((_, index) => (
                     <div
                       key={index}

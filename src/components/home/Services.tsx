@@ -88,12 +88,21 @@ const Services = () => {
                 <CardDescription className="text-gray-400 mb-4">
                   {item.description}
                 </CardDescription>
-                <Link href="#contato" className="inline-block">
-                  <Button variant="secondary" className="text-[#F47F44] hover:text-[#F47F44]/90 p-0 h-auto font-semibold">
-                    Saiba mais
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </Link>
+                {item.title === "Desenvolvimento Ágil" ? (
+                  <Link href="/servicos/desenvolvimento" className="inline-block">
+                    <Button variant="cta" className="group hover:scale-105 transition-transform">
+                      Saiba mais
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-2" />
+                    </Button>
+                  </Link>
+                ) : (
+                  <Link href="#contato" className="inline-block">
+                    <Button variant="cta" className="group hover:scale-105 transition-transform">
+                      Saiba mais
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-2" />
+                    </Button>
+                  </Link>
+                )}
               </CardContent>
             </Card>
           ))}

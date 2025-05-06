@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços de Desenvolvimento</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Desenvolvimento com <span id="dynamic-text">entregas todo dia</span></h1>
+    </header>
+    <main>
+        <img src="images/chaostosuccess.png" alt="Ilustração de Desenvolvimento">
+        <p>Acelere o desenvolvimento do seu projeto com visão de negócio, técnica refinada e uma abordagem meticulosa no controle do seu investimento.</p>
+        <button class="cta-button">Falar com especialista</button>
+    </main>
+    <script>
+        const phrases = ["entregas todo dia", "transparência total", "resultado de negócio"];
+        let currentIndex = 0;
+        const dynamicText = document.getElementById('dynamic-text');
+
+        function changePhrase() {
+            dynamicText.textContent = phrases[currentIndex];
+            currentIndex = (currentIndex + 1) % phrases.length;
+        }
+
+        setInterval(changePhrase, 3000); // Alterna a cada 3 segundos
+    </script>
+</body>
+</html> 

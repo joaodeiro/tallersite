@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect, useCallback } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -73,12 +75,12 @@ const Navbar = () => {
     if (isMobile) {
       return (
         <Button
-          variant="cta"
+          variant="secondary"
           size="lg"
-          className="w-full"
+          className="w-full gradient-hover"
           onClick={() => isClient && (window.location.href = WHATSAPP_URL)}
         >
-          Falar com especialista
+          <span className="gradient-text">Falar com especialista</span>
         </Button>
       );
     }
@@ -86,47 +88,46 @@ const Navbar = () => {
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="cta" size="lg" className="group relative bg-gradient-to-r from-[#DB2337] to-[#F47F44] hover:from-[#DB2337]/90 hover:to-[#F47F44]/90 transition-all duration-300">
-            Falar com especialista
-            <ChevronDown className="ml-2 h-4 w-4 text-white transition-transform duration-300 group-hover:rotate-180" />
+          <Button variant="secondary" size="lg" className="gradient-hover">
+            <span className="gradient-text">Falar com especialista</span>
+            <span className="gradient-icon">
+              <ChevronDown className="ml-2 h-4 w-4" />
+            </span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="start" sideOffset={4} className="w-[260px] bg-[#1e1e1e]/95 backdrop-blur-sm border border-white/5 rounded-xl shadow-xl p-1">
-          <DropdownMenuItem className="rounded-lg focus:bg-white/5">
+          <DropdownMenuItem className="rounded-lg focus:bg-white/5 gradient-dropdown-item">
             <a
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center w-full px-3 py-2 text-white/90 hover:text-white transition-colors"
+              className="flex items-center w-full px-3 py-2"
             >
-              <WhatsAppIcon className="mr-2 h-5 w-5 text-[#25D366]" />
-              <span className="font-medium">WhatsApp</span>
+              <span className="gradient-icon">
+                <WhatsAppIcon className="mr-2 h-5 w-5" />
+              </span>
+              <span className="gradient-text font-medium">WhatsApp</span>
             </a>
           </DropdownMenuItem>
-          <DropdownMenuItem className="rounded-lg focus:bg-white/5">
+          <DropdownMenuItem className="rounded-lg focus:bg-white/5 gradient-dropdown-item">
             <a
               href="#contato"
-              className="flex items-center w-full px-3 py-2 text-white/90 hover:text-white transition-colors"
+              className="flex items-center w-full px-3 py-2"
             >
-              <svg
-                viewBox="0 0 24 24"
-                className="mr-2 h-5 w-5"
-                fill="none"
-                stroke="url(#emailGradient)"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <defs>
-                  <linearGradient id="emailGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#DB2337" />
-                    <stop offset="100%" stopColor="#F47F44" />
-                  </linearGradient>
-                </defs>
-                <rect width="20" height="16" x="2" y="4" rx="2" />
-                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-              </svg>
-              <span className="font-medium">E-mail</span>
+              <span className="gradient-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  className="mr-2 h-5 w-5"
+                  fill="none"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <rect width="20" height="16" x="2" y="4" rx="2" />
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                </svg>
+              </span>
+              <span className="gradient-text font-medium">E-mail</span>
             </a>
           </DropdownMenuItem>
         </DropdownMenuContent>

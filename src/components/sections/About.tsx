@@ -56,19 +56,13 @@ const About = () => {
             variant="cta"
             size="lg"
             className="group hover:scale-105 transition-transform"
-            aria-label="Saiba mais sobre nossa visão"
+            aria-label="Conhecer serviços"
             onClick={() => {
-              const contactSection = document.getElementById('contato');
-              if (contactSection) {
-                contactSection.scrollIntoView({
-                  behavior: 'smooth',
-                  block: 'start'
-                });
-              }
+              window.location.href = '/servicos/desenvolvimento';
             }}
           >
-            Pense mais alto
-            <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-2" />
+            Conhecer serviços
+            <Eye className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-2" />
           </Button>
         </div>
       </div>

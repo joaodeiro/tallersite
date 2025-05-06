@@ -10,7 +10,7 @@ export const buttonVariants = cva(
     variants: {
       variant: {
         cta: "gradient-bg text-white hover:opacity-90 hover:scale-105 active:opacity-80 active:scale-95",
-        secondary: "bg-transparent border-2 border-gradient text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 hover:text-white active:from-primary/20 active:to-secondary/20",
+        secondary: "gradient-border gradient-text gradient-hover hover:text-white active:opacity-90",
         tertiary: "bg-gray-800 text-white hover:bg-gray-700 active:bg-gray-600",
       },
       size: {
