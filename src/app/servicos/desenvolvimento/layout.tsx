@@ -9,10 +9,13 @@ export default function ServicosLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen flex flex-col" style={{overflow: 'visible', height: 'auto'}}>
+    <div className="min-h-screen w-screen flex flex-col relative overflow-x-hidden">
+      <div className="fixed inset-0 bg-[#121212] w-full h-full z-0" aria-hidden="true" />
       <Navbar />
-      {children}
-      <Footer />
+      <div className="relative flex-grow flex flex-col z-10">
+        {children}
+        <Footer />
+      </div>
     </div>
   );
 } 
