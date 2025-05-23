@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, useCallback, useMemo, useRef } from "react";
-import { ChevronDown, Search, Users, Lightbulb, Target, Code, Zap, Calendar, Rocket, LineChart, Move, Banknote, Gem, Eye, Compass, Infinity, Bug, Boxes, Trophy, CircleDot, Layers, Navigation, Layout, Terminal, Database, Code2, Server, MessageSquare, Brain } from "lucide-react";
+import { ChevronDown, Search, Users, Lightbulb, Target, Code, Zap, Calendar, Rocket, LineChart, Move, Banknote, Gem, Eye, Compass, Infinity, Bug, Boxes, Trophy, CircleDot, Layers, Navigation, Layout, Terminal, Database, Code2, Server, MessageSquare, Brain, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import ClientLogosMinimal from "@/components/home/ClientLogosMinimal";
@@ -14,6 +14,7 @@ import {
 import { motion } from "framer-motion";
 import Link from "next/link";
 import ChatFloating from '@/components/ChatFloating';
+import Cal, { getCalApi } from "@calcom/embed-react";
 
 const WHATSAPP_URL = "https://wa.me/554898230107";
 
@@ -227,6 +228,31 @@ const techHub = [
   { icon: <img src="/images/graphql-logo.svg" alt="GraphQL" style={{width: 133, height: 133, filter: 'brightness(0) invert(1)'}} />, alt: "GraphQL", desc: "APIs flexíveis, consulta eficiente de dados, integração moderna." },
   { icon: <img src="/images/strapilogo.svg" alt="Strapi" style={{width: 133, height: 133, filter: 'brightness(0) invert(1)'}} />, alt: "Strapi", desc: "Headless CMS, integrações rápidas, customização avançada." },
 ];
+
+// Componente de agenda Cal.com
+function CalAgenda() {
+  useEffect(() => {
+    (async function () {
+      const cal = await getCalApi({ namespace: "45min" });
+      cal("ui", {
+        cssVarsPerTheme: {
+          light: { "cal-brand": "#E7513E" },
+          dark: { "cal-brand": "#E7513E" }
+        },
+        hideEventTypeDetails: false,
+        layout: "month_view"
+      });
+    })();
+  }, []);
+  return (
+    <Cal
+      namespace="45min"
+      calLink="taller-joaodeiro/45min"
+      style={{ width: "100%", height: "650px", borderRadius: "1rem", overflow: "auto" }}
+      config={{ layout: "month_view" }}
+    />
+  );
+}
 
 export default function ServicosDesenvolvimento() {
   const [showCalendly, setShowCalendly] = useState(false);
@@ -1014,20 +1040,21 @@ function ServicosDesenvolvimentoContent() {
           </Link>
         </div>
       </section>
-      {/* Adicionar antes da seção de cases */}
-      <section className="w-full bg-gradient-to-br from-[#DB2337] to-[#F47F44] py-20 md:py-32 px-8 md:px-16 flex flex-col items-center justify-center text-center rounded-3xl mb-24 shadow-lg">
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Diagnóstico gratuito com especialista</h2>
-        <p className="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto">Descubra oportunidades, riscos e caminhos para acelerar resultados no seu produto digital. Sem compromisso, direto ao ponto, com quem entende de verdade.</p>
-        <a href="#contato" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border-2 border-white text-white font-bold text-lg bg-white/10 hover:bg-white/20 transition">
-          Solicitar diagnóstico gratuito
-          <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        </a>
-      </section>
+      {/* Seção de Depoimentos (carrossel) */}
+      <TestimonialsCarousel />
+      {/* Agenda Taller fora do container cinza */}
+      <div className="w-full flex flex-col items-center justify-center text-center mb-16">
+        <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text" style={{lineHeight: 1.15}}>Você sonha, nós executamos</h2>
+        <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto">Vamos começar a conversar sobre sua ideia? Agende uma reunião diretamente ↓</p>
+        <CalAgenda />
+      </div>
+      {/* Seção de contato com container cinza */}
       <section id="contato" className="w-full my-24 bg-[#181818] rounded-3xl p-4 md:p-12 px-8 md:px-16 shadow-xl mx-auto">
-        <div className="flex flex-col md:flex-row gap-12">
-          {/* Coluna 1: Formulário */}
-          <div className="flex-1 min-w-0">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text text-center md:text-left">Entre em contato</h2>
+        <div className="flex flex-col items-center justify-center gap-8">
+          {/* Título centralizado */}
+          <h2 className="text-4xl md:text-5xl font-bold gradient-text text-center mb-6">Entre em contato</h2>
+          {/* Formulário centralizado */}
+          <div className="w-full max-w-2xl">
             <form onSubmit={handleContactSubmit} className="flex flex-col gap-5">
               <div className="flex flex-col md:flex-row gap-5">
                 <input name="nome" required placeholder="Nome" className="flex-1 rounded-lg border border-gray-700 bg-[#232323] px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#DB2337]" />
@@ -1038,40 +1065,85 @@ function ServicosDesenvolvimentoContent() {
                 <input name="whatsapp" required placeholder="Whatsapp/Celular" className="flex-1 rounded-lg border border-gray-700 bg-[#232323] px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#DB2337]" />
               </div>
               <textarea name="mensagem" required placeholder="Mensagem" rows={4} className="rounded-lg border border-gray-700 bg-[#232323] px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#DB2337]" />
-              <div className="flex flex-col md:flex-row gap-4 justify-center md:justify-start mt-2">
+              <div className="flex flex-col items-center gap-4 justify-center mt-2">
                 <button type="submit" className="bg-gradient-to-r from-[#DB2337] to-[#F47F44] text-white font-bold rounded-xl px-8 py-3 text-lg shadow hover:scale-105 transition">
                   Enviar mensagem
                 </button>
               </div>
             </form>
           </div>
-          {/* Coluna 2: Agendamento */}
-          <div className="flex-1 min-w-0 flex flex-col items-center justify-start md:justify-center text-center md:text-left">
-            <h3 className="text-2xl md:text-3xl font-bold mb-2 gradient-text">Agenda Taller</h3>
-            <p className="text-base text-white/80 mb-6 max-w-xs">Escolha uma data e hora diretamente na nossa agenda.</p>
-            <button type="button" onClick={() => setShowCalendly(true)} className="border-2 border-[#DB2337] text-[#DB2337] font-bold rounded-xl px-8 py-3 text-lg bg-transparent hover:bg-[#DB2337]/10 transition flex items-center gap-2 w-full max-w-xs justify-center">
-              Agendar horário
-              <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="10" cy="10" r="8"/><path d="M10 6v4l2 2"/></svg>
-            </button>
-          </div>
         </div>
-        {showCalendly && (
-          <div className="fixed inset-0 z-50 flex justify-center bg-black/60" style={{alignItems: 'flex-start'}}>
-            <div className="bg-[#181818] rounded-2xl shadow-2xl p-12 relative max-w-2xl w-full animate-fadeInUp overflow-hidden" style={{marginTop: 120}}>
-              <button onClick={() => setShowCalendly(false)} aria-label="Fechar" className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center text-white bg-[#232323] hover:bg-[#444] rounded-lg text-2xl z-20 shadow-lg focus:outline-none focus:ring-2 focus:ring-[#DB2337]">
-                ×
-              </button>
-              <iframe
-                src="https://calendly.com/joao-deiro-taller/30min"
-                title="Agendar horário"
-                className="w-full border-0"
-                style={{minHeight: 500, height: '600px', maxHeight: '70vh', borderRadius: '1rem'}}
-                allow="camera; microphone; fullscreen;"
-              />
-            </div>
-          </div>
-        )}
       </section>
     </>
+  );
+}
+
+// Componente de carrossel de depoimentos
+const testimonials = [
+  {
+    nome: "Matheus Spagnuolo",
+    cargo: "Gerente de Grupo de Produtos",
+    empresa: "RD Station",
+    logo: "/images/rdstation-logo.svg",
+    texto: "A Taller tem nos ajudado bastante com a execução das tarefas relacionadas ao desenvolvimento do nosso frontend em React. Ajustamos os processos de desenvolvimento e adaptamos o fluxo para simplificar o review de atividades e com isso conseguimos maior rapidez nas entregas e assertividade nas estimativas."
+  },
+  {
+    nome: "Ana Lima",
+    cargo: "Product Manager",
+    empresa: "Fintech Z",
+    logo: "/images/railslogo.svg",
+    texto: "A Taller tem nos ajudado bastante com a execução das tarefas relacionadas ao desenvolvimento do nosso frontend em React. Ajustamos os processos de desenvolvimento e adaptamos o fluxo para simplificar o review de atividades e com isso conseguimos maior rapidez nas entregas e assertividade nas estimativas."
+  },
+  {
+    nome: "João Souza",
+    cargo: "CTO",
+    empresa: "Startup Y",
+    logo: "/images/reactlogo.svg",
+    texto: "A Taller tem nos ajudado bastante com a execução das tarefas relacionadas ao desenvolvimento do nosso frontend em React. Ajustamos os processos de desenvolvimento e adaptamos o fluxo para simplificar o review de atividades e com isso conseguimos maior rapidez nas entregas e assertividade nas estimativas."
+  },
+];
+function TestimonialsCarousel() {
+  const [idx, setIdx] = useState(0);
+  const prev = () => setIdx((i) => (i === 0 ? testimonials.length - 1 : i - 1));
+  const next = () => setIdx((i) => (i === testimonials.length - 1 ? 0 : i + 1));
+  const t = testimonials[idx];
+  // Fotos fictícias para exemplo
+  const fotos = [
+    '/images/testimonial1.jpg',
+    '/images/testimonial2.jpg',
+    '/images/testimonial3.jpg',
+  ];
+  return (
+    <section className="w-full max-w-7xl mx-auto flex flex-col items-center justify-center my-24 px-4 md:px-12">
+      <h2 className="text-4xl md:text-5xl font-bold mb-12 gradient-text text-center">O que dizem nossos clientes</h2>
+      <div className="w-full grid md:grid-cols-[auto_1fr] items-center justify-center gap-12 md:gap-20">
+        {/* Coluna esquerda: foto quadrada centralizada verticalmente */}
+        <div className="flex-shrink-0 flex items-center justify-center w-full md:w-auto h-full">
+          <div className="w-48 h-48 md:w-60 md:h-60 rounded-2xl overflow-hidden border-4 border-[#232323] shadow-lg bg-[#181818] flex items-center justify-center">
+            <img src={fotos[idx]} alt={t.nome} className="w-full h-full object-cover" />
+          </div>
+        </div>
+        {/* Coluna direita: depoimento */}
+        <div className="flex flex-col items-center md:items-start justify-center text-center md:text-left h-full">
+          <p className="text-xl md:text-2xl text-white mb-8 font-light leading-relaxed max-w-2xl">“{t.texto}”</p>
+          <div className="flex items-center gap-4 w-full max-w-xl justify-center md:justify-start mb-2">
+            <div className="font-bold text-white text-lg md:text-xl whitespace-nowrap">{t.nome}</div>
+            <span className="hidden md:block h-8 border-l border-gray-600 mx-2" />
+            <div className="text-white/70 text-base md:text-lg whitespace-nowrap">{t.cargo} - {t.empresa}</div>
+            <span className="hidden md:block h-8 border-l border-gray-600 mx-2" />
+            <img src={t.logo} alt={t.empresa} className="w-24 h-8 object-contain" style={{filter: 'brightness(0) invert(1)'}} />
+          </div>
+        </div>
+      </div>
+      {/* Botões centralizados ao container */}
+      <div className="flex gap-4 mt-10 justify-center w-full">
+        <button onClick={prev} className="rounded-full w-12 h-12 flex items-center justify-center text-white bg-[#232323] hover:bg-[#DB2337] transition text-2xl shadow">
+          <ChevronLeft className="w-7 h-7" />
+        </button>
+        <button onClick={next} className="rounded-full w-12 h-12 flex items-center justify-center text-white bg-[#232323] hover:bg-[#DB2337] transition text-2xl shadow">
+          <ChevronRight className="w-7 h-7" />
+        </button>
+      </div>
+    </section>
   );
 } 
