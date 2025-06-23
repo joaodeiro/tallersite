@@ -17,40 +17,18 @@
 
 ## Próximas Tarefas
 - [ ] Deixar "revoluções." em maiúsculo e aplicar o degradê da cor principal
+- [ ] Aplicar efeito de degradê vertical do topo da seção "Não somos como os outros" até o fim da seção "Serviços Revolucionários"
 
 ## Concluídas
-- [x] Padronizar todos os botões do site:
-  - [x] Definir 4 variantes (CTA, secundário, terciário e link)
-  - [x] Documentar interações e estados de cada variante
-  - [x] Aplicar as variantes em todos os botões do site
-  - [x] Garantir consistência nas interações (hover, active, focus)
-- [x] Atualizar o header:
-  - [x] Adicionar efeito de hover mais suave nos links
-  - [x] Trocar todas as cores principais do vermelho original para o degradê
-  - [x] Ajustar o espaçamento do botão "Fale Conosco"
-  - [x] Melhorar a responsividade do menu mobile
-  - [x] Restaurar a animação de hover do botão "Fale Conosco"
-- [x] Melhorar o header com efeitos de hover mais suaves, transições melhores e ajustes de responsividade
-- [x] Remover o preenchimento branco do botão secundário na seção hero
-- [x] Padronizar todos os botões do sistema seguindo um design system
-- [x] Criar documentação do design system para uso com AI/no-code
-- [x] Adicionar imagens placeholder na seção "Empresas que ousaram confiar na revolução" (É uma seção de prova social, então quero inserir a logo das empresas)
-- [x] Corrigir duplicação da seção "Não somos como os outros" na página inicial
-- [x] Remover textos redundantes da hero section ("Não somos como os outros" e seu parágrafo explicativo)
-- [x] Atualizar título da página para "Conectando tecnologia com grandes negócios desde 2012 | Taller Negócios Digitais"
-- [x] Adicionar favicon personalizado (aguardando arquivo do logo)
-- [x] Ajustar favicon para mostrar apenas o logo sem o círculo ao redor
-- [x] Converter favicon para PNG mantendo apenas o logo original
-- [x] Atualizar a cor principal do sistema para um degradê de #DB2237 para #F47F44 (substituindo #F14B57)
-- [x] Fazer o carrossel da prova social ser infinito (resolver o problema do espaço vazio no final da animação)
-- [x] Ajustar o "APENAS PRODUTOS." para minúsculo e com mesmo estilo de "Não criamos"
-- [x] Atualizar o texto da hero para "Criando RESULTADO, e não apenas produtos." com degradê em "Criando RESULTADO"
-- [x] Ajustar estilo do texto da hero: negrito e degradê em "Criando RESULTADO,", vírgula na mesma linha, fonte menor e sem negrito em "e não apenas produtos."
-- [x] Remover botão "Veja o impossível"
-- [x] Ajustar botão "Desafie nossa equipe" para ter mesma largura do texto e 30% mais altura
-- [x] Remover vírgula após "RESULTADO"
-- [x] Ajustar tamanhos de fonte: "Criando RESULTADO" para 64px, "e não apenas produtos" para 36px
-- [x] Ajustar botão "Desafie nossa equipe" para 20px e ícone proporcional
+- [x] Atualizar seção de depoimentos na página /desenvolvimento:
+  - [x] Trocar "Ana Lima" por "Matheus Frade"
+  - [x] Atualizar cargo do Matheus Frade para "Head de Afiliados na Alfa Bet"
+  - [x] Atualizar logo do Matheus Frade para "clientlogo-alfa"
+  - [x] Atualizar logo do Matheus Spagnuolo para "clientlogo-RDStation"
+  - [x] Atualizar cargo do Matheus Spagnuolo para "Group Product Manager"
+  - [x] Deixar apenas 2 slides (Matheus Spagnuolo e Matheus Frade)
+  - [x] Atualizar frase do Matheus Frade
+  - [x] Atualizar fotos de perfil para usar as imagens corretas (matheusspagnuolo.png e matheusfrade.png)
 
 ## Notas
 - Use o formato `- [ ]`

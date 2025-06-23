@@ -1082,24 +1082,17 @@ function ServicosDesenvolvimentoContent() {
 const testimonials = [
   {
     nome: "Matheus Spagnuolo",
-    cargo: "Gerente de Grupo de Produtos",
+    cargo: "Group Product Manager",
     empresa: "RD Station",
-    logo: "/images/rdstation-logo.svg",
+    logo: "/images/clientlogo-rdstation.png",
     texto: "A Taller tem nos ajudado bastante com a execução das tarefas relacionadas ao desenvolvimento do nosso frontend em React. Ajustamos os processos de desenvolvimento e adaptamos o fluxo para simplificar o review de atividades e com isso conseguimos maior rapidez nas entregas e assertividade nas estimativas."
   },
   {
-    nome: "Ana Lima",
-    cargo: "Product Manager",
-    empresa: "Fintech Z",
-    logo: "/images/railslogo.svg",
-    texto: "A Taller tem nos ajudado bastante com a execução das tarefas relacionadas ao desenvolvimento do nosso frontend em React. Ajustamos os processos de desenvolvimento e adaptamos o fluxo para simplificar o review de atividades e com isso conseguimos maior rapidez nas entregas e assertividade nas estimativas."
-  },
-  {
-    nome: "João Souza",
-    cargo: "CTO",
-    empresa: "Startup Y",
-    logo: "/images/reactlogo.svg",
-    texto: "A Taller tem nos ajudado bastante com a execução das tarefas relacionadas ao desenvolvimento do nosso frontend em React. Ajustamos os processos de desenvolvimento e adaptamos o fluxo para simplificar o review de atividades e com isso conseguimos maior rapidez nas entregas e assertividade nas estimativas."
+    nome: "Matheus Frade",
+    cargo: "Head de Afiliados",
+    empresa: "Alfa Bet",
+    logo: "/images/clientlogo-alfa.png",
+    texto: "Taller é uma empresa altamente qualificada e confiável para desenvolver soluções, estando apta a realizar projetos com sucesso."
   },
 ];
 function TestimonialsCarousel() {
@@ -1107,12 +1100,13 @@ function TestimonialsCarousel() {
   const prev = () => setIdx((i) => (i === 0 ? testimonials.length - 1 : i - 1));
   const next = () => setIdx((i) => (i === testimonials.length - 1 ? 0 : i + 1));
   const t = testimonials[idx];
-  // Fotos fictícias para exemplo
+  
+  // Fotos dos depoimentos
   const fotos = [
-    '/images/testimonial1.jpg',
-    '/images/testimonial2.jpg',
-    '/images/testimonial3.jpg',
+    '/images/matheusspagnuolo.png',
+    '/images/matheusfrade.png',
   ];
+  
   return (
     <section className="w-full max-w-7xl mx-auto flex flex-col items-center justify-center my-24 px-4 md:px-12">
       <h2 className="text-4xl md:text-5xl font-bold mb-12 gradient-text text-center">O que dizem nossos clientes</h2>
