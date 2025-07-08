@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, useCallback, useMemo, useRef } from "react";
-import { ChevronDown, Search, Users, Lightbulb, Target, Code, Zap, Calendar, Rocket, LineChart, Move, Banknote, Gem, Eye, Compass, Infinity, Bug, Boxes, Trophy, CircleDot, Layers, Navigation, Layout, Terminal, Database, Code2, Server, MessageSquare, Brain, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronDown, Search, Users, Lightbulb, Target, Code, Zap, Calendar, Rocket, LineChart, Move, Banknote, Gem, Eye, Compass, Infinity, Bug, Boxes, Trophy, CircleDot, Layers, Navigation, Layout, Terminal, Database, Code2, Server, MessageSquare, Brain, ChevronLeft, ChevronRight, TrendingUp, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import ClientLogosMinimal from "@/components/home/ClientLogosMinimal";
@@ -15,6 +15,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import ChatFloating from '@/components/ChatFloating';
 import Cal, { getCalApi } from "@calcom/embed-react";
+import Contact from "@/components/sections/Contact";
 
 const WHATSAPP_URL = "https://wa.me/554898230107";
 
@@ -212,11 +213,6 @@ function TechCubesGrid() {
 }
 
 const techHub = [
-  // Linha 1: IAs
-  { icon: <img src="/images/gpt-logo.svg" alt="ChatGPT" style={{width: 133, height: 133, filter: 'brightness(0) invert(1)'}} />, alt: "ChatGPT", desc: "IA generativa, automação de atendimento, copiloto de processos." },
-  { icon: <img src="/images/perplexity-logo.svg" alt="Perplexity" style={{width: 133, height: 133, filter: 'brightness(0) invert(1)'}} />, alt: "Perplexity", desc: "IA para busca, pesquisa e copiloto de conhecimento." },
-  { icon: <img src="/images/claude-logo.svg" alt="Claude" style={{width: 133, height: 133, filter: 'brightness(0) invert(1)'}} />, alt: "Claude", desc: "IA para análise de dados e insights estratégicos." },
-  { icon: <img src="/images/cursor-logo.svg" alt="Cursor" style={{width: 133, height: 133, filter: 'brightness(0) invert(1)'}} />, alt: "Cursor", desc: "Dev Experience, automação de código, produtividade máxima." },
   // Linha 2: Front end
   { icon: <img src="/images/flutterlogo.svg" alt="Flutter" style={{width: 133, height: 133, filter: 'brightness(0) invert(1)'}} />, alt: "Flutter", desc: "Mobile multiplataforma, animações e integrações complexas." },
   { icon: <img src="/images/typescript-logo.svg" alt="TypeScript" style={{width: 133, height: 133, filter: 'brightness(0) invert(1)'}} />, alt: "TypeScript", desc: "Código seguro, escalável, manutenção facilitada." },
@@ -1048,32 +1044,44 @@ function ServicosDesenvolvimentoContent() {
         <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto">Vamos começar a conversar sobre sua ideia? Agende uma reunião diretamente ↓</p>
         <CalAgenda />
       </div>
-      {/* Seção de contato com container cinza */}
-      <section id="contato" className="w-full my-24 bg-[#181818] rounded-3xl p-4 md:p-12 px-8 md:px-16 shadow-xl mx-auto">
-        <div className="flex flex-col items-center justify-center gap-8">
-          {/* Título centralizado */}
-          <h2 className="text-4xl md:text-5xl font-bold gradient-text text-center mb-6">Entre em contato</h2>
-          {/* Formulário centralizado */}
-          <div className="w-full max-w-2xl">
-            <form onSubmit={handleContactSubmit} className="flex flex-col gap-5">
-              <div className="flex flex-col md:flex-row gap-5">
-                <input name="nome" required placeholder="Nome" className="flex-1 rounded-lg border border-gray-700 bg-[#232323] px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#DB2337]" />
-                <input name="sobrenome" required placeholder="Sobrenome" className="flex-1 rounded-lg border border-gray-700 bg-[#232323] px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#DB2337]" />
-              </div>
-              <div className="flex flex-col md:flex-row gap-5">
-                <input name="email" type="email" required placeholder="E-mail" className="flex-1 rounded-lg border border-gray-700 bg-[#232323] px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#DB2337]" />
-                <input name="whatsapp" required placeholder="Whatsapp/Celular" className="flex-1 rounded-lg border border-gray-700 bg-[#232323] px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#DB2337]" />
-              </div>
-              <textarea name="mensagem" required placeholder="Mensagem" rows={4} className="rounded-lg border border-gray-700 bg-[#232323] px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#DB2337]" />
-              <div className="flex flex-col items-center gap-4 justify-center mt-2">
-                <button type="submit" className="bg-gradient-to-r from-[#DB2337] to-[#F47F44] text-white font-bold rounded-xl px-8 py-3 text-lg shadow hover:scale-105 transition">
-                  Enviar mensagem
-                </button>
-              </div>
-            </form>
+      {/* Seção Cross-sell Taller */}
+      <section className="w-full my-16 bg-[#232323] rounded-3xl p-8 md:p-16 flex flex-col items-center shadow-xl">
+        <h2 className="text-[36px] md:text-[36px] font-bold mb-2 gradient-text text-center leading-tight">Além do código: o que mais fazemos por aqui</h2>
+        <p className="text-lg text-white/80 mb-10 max-w-2xl text-center">Conectamos desenvolvimento com product discovery, consultorias e treinamentos para gerar ainda mais valor ao seu produto.</p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl mb-0">
+          {/* Card 1: Consultorias */}
+          <div className="bg-[#181818] rounded-2xl p-6 flex flex-col items-center text-center shadow">
+            <span className="mb-4 flex items-center justify-center w-14 h-14 rounded-xl" style={{background: 'linear-gradient(135deg, #DB2337 0%, #F47F44 100%)'}}>
+              {/* Ícone Consultoria */}
+              <TrendingUp width={32} height={32} stroke="#fff" strokeWidth={2} />
+            </span>
+            <h3 className="text-xl font-semibold mb-2 text-white">Consultorias</h3>
+            <p className="text-base text-white/80 mb-4">Consultoria, mentoria e apoio em governança para Produtos Digitais com um modelo próprio, criado por nós, que vai levar sua gestão para o próximo nível</p>
+            <a href="/servicos/consultoria" className="w-full flex items-center gap-2 justify-center rounded-xl px-4 py-3 mt-2 font-semibold text-white bg-[#232323] hover:bg-[#353535] transition-colors border border-[#2a2a2a] text-base shadow-none">Saiba mais</a>
+          </div>
+          {/* Card 2: Treinamentos */}
+          <div className="bg-[#181818] rounded-2xl p-6 flex flex-col items-center text-center shadow">
+            <span className="mb-4 flex items-center justify-center w-14 h-14 rounded-xl" style={{background: 'linear-gradient(135deg, #DB2337 0%, #F47F44 100%)'}}>
+              {/* Ícone Treinamento */}
+              <GraduationCap width={32} height={32} stroke="#fff" strokeWidth={2} />
+            </span>
+            <h3 className="text-xl font-semibold mb-2 text-white">Treinamentos</h3>
+            <p className="text-base text-white/80 mb-4">Ajudamos a alavancar o conhecimento da sua equipe com treinamentos que vão ajudar a sua eficácia e eficiência, tornando a sua empresa mais efetiva.</p>
+            <a href="/servicos/treinamentos" className="w-full flex items-center gap-2 justify-center rounded-xl px-4 py-3 mt-2 font-semibold text-white bg-[#232323] hover:bg-[#353535] transition-colors border border-[#2a2a2a] text-base shadow-none">Saiba mais</a>
+          </div>
+          {/* Card 3: Product Discovery */}
+          <div className="bg-[#181818] rounded-2xl p-6 flex flex-col items-center text-center shadow">
+            <span className="mb-4 flex items-center justify-center w-14 h-14 rounded-xl" style={{background: 'linear-gradient(135deg, #DB2337 0%, #F47F44 100%)'}}>
+              {/* Ícone Discovery */}
+              <Compass width={32} height={32} stroke="#fff" strokeWidth={2} />
+            </span>
+            <h3 className="text-xl font-semibold mb-2 text-white">Product Discovery</h3>
+            <p className="text-base text-white/80 mb-4">Reduza risco antes de investir.<br/>Identifique oportunidades, valide ideias e encontre o encaixe certo entre problema, solução e estratégia.</p>
+            <a href="/servicos/discovery" className="w-full flex items-center gap-2 justify-center rounded-xl px-4 py-3 mt-2 font-semibold text-white bg-[#232323] hover:bg-[#353535] transition-colors border border-[#2a2a2a] text-base shadow-none">Saiba mais</a>
           </div>
         </div>
       </section>
+      <Contact />
     </>
   );
 }
@@ -1119,7 +1127,7 @@ function TestimonialsCarousel() {
         </div>
         {/* Coluna direita: depoimento */}
         <div className="flex flex-col items-center md:items-start justify-center text-center md:text-left h-full">
-          <p className="text-xl md:text-2xl text-white mb-8 font-light leading-relaxed max-w-2xl">“{t.texto}”</p>
+          <p className="text-xl md:text-2xl text-white mb-8 font-light leading-relaxed max-w-2xl">"{t.texto}"</p>
           <div className="flex items-center gap-4 w-full max-w-xl justify-center md:justify-start mb-2">
             <div className="font-bold text-white text-lg md:text-xl whitespace-nowrap">{t.nome}</div>
             <span className="hidden md:block h-8 border-l border-gray-600 mx-2" />

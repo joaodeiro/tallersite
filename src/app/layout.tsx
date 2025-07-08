@@ -7,8 +7,11 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Taller",
-  description: "Taller Site",
+  title: 'Taller - Desenvolvimento de Software, Consultorias e Treinamentos',
+  description: 'A Taller acelera resultados com desenvolvimento de software, consultorias e treinamentos sob medida.',
+  icons: {
+    icon: '/images/icon-only-white.png',
+  },
 };
 
 export default function RootLayout({

@@ -70,14 +70,14 @@ const Contact = () => {
   };
 
   return (
-    <section className="relative py-20 overflow-hidden" id="contato">
+    <section className="relative py-20" id="contato">
       {/* Fundo escuro */}
       <div className="absolute inset-0 -z-10 bg-[#121212]" />
 
       {/* Efeito de gradiente 1 */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-gradient-to-br from-[#DB2337] to-[#F47F44] opacity-20 blur-3xl rounded-full" />
-        <div className="absolute -top-40 -left-40 w-96 h-96 bg-gradient-to-br from-[#DB2337] to-[#F47F44] opacity-10 blur-3xl rounded-full" />
+        <div className="absolute -bottom-40 -left-[480px] w-[48rem] h-[48rem] bg-gradient-to-br from-[#DB2337] to-[#F47F44] opacity-20 blur-3xl rounded-full" />
+        <div className="absolute -top-40 -right-[480px] w-[48rem] h-[48rem] bg-gradient-to-br from-[#DB2337] to-[#F47F44] opacity-10 blur-3xl rounded-full" />
       </div>
 
       <div className="max-container">
@@ -88,9 +88,9 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-16">
+        <div className="flex flex-col md:flex-row justify-center items-start gap-8 lg:gap-16">
           {/* Informações de contato */}
-          <div>
+          <div className="mb-8 md:mb-0 md:mr-8">
             <h3 className="text-2xl font-semibold mb-6">Vamos trabalhar juntos</h3>
 
             <div className="space-y-6">
@@ -173,7 +173,7 @@ const Contact = () => {
           </div>
 
           {/* Formulário de contato */}
-          <div className="ai-card bg-[#1e1e1e] border border-[#222222]">
+          <div className="ai-card bg-[#1e1e1e] border border-[#222222] max-w-md mx-auto p-8">
             <h3 className="text-xl font-semibold mb-6">Marque uma conversa</h3>
 
             {formSubmitted ? (
@@ -189,39 +189,31 @@ const Contact = () => {
                 </Button>
               </div>
             ) : (
-              <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Nome</Label>
-                    <Input name="name" id="name" placeholder="Seu nome" className="bg-[#121212] border-[#333333] focus:border-[#DB2337]" required />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="lastname">Sobrenome</Label>
-                    <Input name="lastname" id="lastname" placeholder="Seu sobrenome" className="bg-[#121212] border-[#333333] focus:border-[#DB2337]" required />
-                  </div>
+              <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-5">
+                <div className="space-y-2">
+                  <Label htmlFor="name">Nome</Label>
+                  <Input name="name" id="name" placeholder="Seu nome" className="bg-[#121212] border-[#333333] focus:border-[#DB2337]" required />
                 </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input name="email" id="email" type="email" placeholder="exemplo@email.com" className="bg-[#121212] border-[#333333] focus:border-[#DB2337]" required />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="whatsapp">WhatsApp</Label>
-                    <Input name="whatsapp" id="whatsapp" placeholder="(00) 00000-0000" className="bg-[#121212] border-[#333333] focus:border-[#DB2337]" required />
-                  </div>
+                <div className="space-y-2">
+                  <Label htmlFor="lastname">Sobrenome</Label>
+                  <Input name="lastname" id="lastname" placeholder="Seu sobrenome" className="bg-[#121212] border-[#333333] focus:border-[#DB2337]" required />
                 </div>
-
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email</Label>
+                  <Input name="email" id="email" type="email" placeholder="exemplo@email.com" className="bg-[#121212] border-[#333333] focus:border-[#DB2337]" required />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="whatsapp">WhatsApp</Label>
+                  <Input name="whatsapp" id="whatsapp" placeholder="(00) 00000-0000" className="bg-[#121212] border-[#333333] focus:border-[#DB2337]" required />
+                </div>
                 <div className="space-y-2">
                   <Label htmlFor="company">Empresa</Label>
                   <Input name="company" id="company" placeholder="Nome da sua empresa" className="bg-[#121212] border-[#333333] focus:border-[#DB2337]" required />
                 </div>
-
                 <div className="space-y-2">
                   <Label htmlFor="message">Mensagem</Label>
                   <Textarea name="message" id="message" placeholder="Como podemos ajudar?" rows={4} className="bg-[#121212] border-[#333333] focus:border-[#DB2337]" required />
                 </div>
-
                 <div className="flex items-start space-x-2">
                   <Checkbox name="terms" id="terms" className="bg-[#121212] border-[#333333] data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-[#DB2337] data-[state=checked]:to-[#F47F44] data-[state=checked]:border-transparent" />
                   <div className="grid gap-1">
@@ -230,15 +222,13 @@ const Contact = () => {
                     </Label>
                   </div>
                 </div>
-
                 {error && (
                   <div className="text-red-500 text-sm">{error}</div>
                 )}
-
                 <Button
                   type="submit"
                   variant="cta"
-                  className="w-full"
+                  className="mx-auto"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? "Enviando..." : "Enviar mensagem"}
