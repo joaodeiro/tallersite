@@ -13,6 +13,18 @@ const formatDate = (dateString: string) => {
   }).format(date);
 };
 
+// Função para limpar caracteres HTML codificados
+const cleanHtmlEntities = (text: string) => {
+  return text
+    .replace(/&#8220;/g, '"')
+    .replace(/&#8221;/g, '"')
+    .replace(/&#8211;/g, '–')
+    .replace(/&#8212;/g, '—')
+    .replace(/&#8216;/g, "'")
+    .replace(/&#8217;/g, "'")
+    .replace(/&#8230;/g, '…');
+};
+
 const Resources = () => {
   const [posts, setPosts] = useState([]);
 
@@ -22,8 +34,8 @@ const Resources = () => {
       .then(response => response.json())
       .then(data => {
         const formattedPosts = data.map(post => ({
-          title: post.title.rendered,
-          excerpt: post.excerpt.rendered.replace(/<[^>]+>/g, '').slice(0, 150) + '...',
+          title: cleanHtmlEntities(post.title.rendered),
+          excerpt: cleanHtmlEntities(post.excerpt.rendered.replace(/<[^>]+>/g, '')).slice(0, 150) + '...',
           link: post.link,
           date: formatDate(post.date)
         }));
@@ -101,7 +113,7 @@ const Resources = () => {
             </div>
 
             <a 
-              href="https://www.youtube.com/watch?v=nAsg_JBW7xM" 
+              href="https://www.youtube.com/watch?v=WZpnp4eMW7Y&t=1s&pp=ygUNdGFsbGVyY2FzdCAyNg%3D%3D" 
               target="_blank" 
               rel="noopener noreferrer"
               className="block ai-card transform transition-all duration-500 hover:translate-y-[-10px] hover:shadow-[0_0_30px_rgba(219,34,55,0.2)_,_0_0_30px_rgba(244,127,68,0.2)] bg-[#121212] border border-gray-800/50"
@@ -111,7 +123,7 @@ const Resources = () => {
                   <div className="w-full h-full flex items-center justify-center relative group">
                     {/* Thumbnail do vídeo com overlay gradiente */}
                     <img 
-                      src={`https://img.youtube.com/vi/nAsg_JBW7xM/maxresdefault.jpg`}
+                      src={`https://img.youtube.com/vi/WZpnp4eMW7Y/maxresdefault.jpg`}
                       alt="Thumbnail do vídeo"
                       className="absolute inset-0 w-full h-full object-cover"
                     />
@@ -124,9 +136,13 @@ const Resources = () => {
                   </div>
                 </AspectRatio>
               </div>
-              <h4 className="font-bold text-lg md:text-xl text-white group-hover:gradient-text transition-colors duration-300">Conheça a Taller</h4>
+              <h4 className="font-bold text-lg md:text-xl text-white group-hover:gradient-text transition-colors duration-300">Priorizando o que realmente importa com eficiência e eficácia | TallerCast #26</h4>
               <p className="text-sm md:text-base text-gray-300 mt-2 md:mt-3">
-                Descubra como transformamos desafios em oportunidades através da tecnologia e inovação.
+                Você já se perguntou se estava apenas entregando um monte de coisa, ou estava entregando a coisa certa? Essa pergunta levanta uma série de outras com relação à eficácia e eficiência.
+                <br /><br />
+                Será que estamos nos concentrando apenas na eficiência, ou estamos realmente alcançando a eficácia nos projetos? Afinal, uma é mais importante do que a outra? Precisamos escolher?
+                <br /><br />
+                O episódio do TallerCast de hoje veio para falarmos mais sobre esses pontos! Vem descobrir mais sobre esse dilema a partir da experiência do nosso CEO, Rafael Caceres e CTO Sebastian Ferrari.
               </p>
               <div className="mt-3 md:mt-4">
                 <span className="group px-0 text-transparent bg-clip-text bg-gradient-to-r from-[#DB2337] to-[#F47F44] hover:from-[#DB2337]/80 hover:to-[#F47F44]/80 text-sm md:text-base inline-flex items-center">

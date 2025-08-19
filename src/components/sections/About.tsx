@@ -58,7 +58,7 @@ const About = () => {
             className="group hover:scale-105 transition-transform"
             aria-label="Conhecer serviços"
             onClick={() => {
-              window.location.href = '/servicos/desenvolvimento';
+              document.getElementById('servicos')?.scrollIntoView({ behavior: 'smooth' });
             }}
           >
             Conhecer serviços

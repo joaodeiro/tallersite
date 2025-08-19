@@ -278,7 +278,7 @@ function ServicosDesenvolvimentoContent() {
     const interval = setInterval(() => {
       setIsAnimating(true);
       setAnimationStep(prev => (prev + 1) % (phrases.length * 4));
-    }, 1800);
+    }, 2160);
 
     return () => clearInterval(interval);
   }, []);
@@ -330,33 +330,33 @@ function ServicosDesenvolvimentoContent() {
         /* Keyframes para cada rotação com overshoot mais suave */
         @keyframes rotate-to-0 {
           0% { transform: rotateX(270deg); }
-          60% { transform: rotateX(-15deg); }
-          80% { transform: rotateX(8deg); }
-          90% { transform: rotateX(-4deg); }
+          60% { transform: rotateX(-11deg); }
+          80% { transform: rotateX(6deg); }
+          90% { transform: rotateX(-3deg); }
           100% { transform: rotateX(0deg); }
         }
 
         @keyframes rotate-to-90 {
           0% { transform: rotateX(0deg); }
-          60% { transform: rotateX(105deg); }
-          80% { transform: rotateX(82deg); }
-          90% { transform: rotateX(94deg); }
+          60% { transform: rotateX(104deg); }
+          80% { transform: rotateX(84deg); }
+          90% { transform: rotateX(93deg); }
           100% { transform: rotateX(90deg); }
         }
 
         @keyframes rotate-to-180 {
           0% { transform: rotateX(90deg); }
-          60% { transform: rotateX(195deg); }
-          80% { transform: rotateX(172deg); }
-          90% { transform: rotateX(184deg); }
+          60% { transform: rotateX(194deg); }
+          80% { transform: rotateX(174deg); }
+          90% { transform: rotateX(183deg); }
           100% { transform: rotateX(180deg); }
         }
 
         @keyframes rotate-to-270 {
           0% { transform: rotateX(180deg); }
-          60% { transform: rotateX(285deg); }
-          80% { transform: rotateX(262deg); }
-          90% { transform: rotateX(274deg); }
+          60% { transform: rotateX(284deg); }
+          80% { transform: rotateX(264deg); }
+          90% { transform: rotateX(273deg); }
           100% { transform: rotateX(270deg); }
         }
 
@@ -513,7 +513,7 @@ function ServicosDesenvolvimentoContent() {
         .gradient-border-hover:hover {
           border: 2px solid transparent;
         }
-        .gradient-border-hover:hover::before {
+        .gradient-border-hover:hover:before {
           content: '';
           position: absolute;
           inset: -2px;
@@ -576,7 +576,7 @@ function ServicosDesenvolvimentoContent() {
 
         /* Overlay preto-transparente */
         .case-card-overlay .bg-gradient-to-t {
-          background: linear-gradient(to top, rgba(0,0,0,0.92) 70%, rgba(0,0,0,0.7) 90%, transparent 100%) !important;
+          background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.85) 40%, rgba(0,0,0,0.6) 70%, rgba(0,0,0,0.3) 85%, transparent 100%) !important;
         }
 
         .logo-gradient {
@@ -729,7 +729,7 @@ function ServicosDesenvolvimentoContent() {
           </div>
           {/* Etapa 1: Descoberta */}
           <ProcessStep
-            imageSrc="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80"
+            imageSrc="/images/evoluitododia.png"
             imageAlt="Etapa de Descoberta"
             badge="O jeito Taller de fazer"
             title="Produto evoluindo TODO DIA"
@@ -741,7 +741,7 @@ function ServicosDesenvolvimentoContent() {
           />
           {/* Etapa 2: Criação */}
           <ProcessStep
-            imageSrc="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80"
+            imageSrc="/images/f4pcanvas.png"
             imageAlt="Etapa de Criação"
             imageRight
             badge="O jeito Taller de fazer"
@@ -977,16 +977,14 @@ function ServicosDesenvolvimentoContent() {
         <h2 className="text-4xl md:text-5xl font-bold mb-8 gradient-text">Nossas melhores histórias</h2>
         <p className="text-lg text-white mb-12 max-w-2xl mx-auto">Conheça alguns dos projetos de maior impacto desenvolvidos pela Taller, que transformaram negócios e geraram resultados reais para nossos clientes.</p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
-          <Link href="/cases/xpto" className="case-card-effect-link">
+          <Link href="https://blog.taller.net.br/guia-essencial-do-fluxo-unificado/" className="case-card-effect-link">
             <div className="case-card-stroke group">
               <div className="case-card-effect relative rounded-2xl overflow-hidden" style={{height: '320px'}}>
-                <img src="/images/statusreport.png" alt="Case 1" className="case-card-img w-full h-full object-cover transition-transform duration-500" />
+                <img src="/images/postblog1.png" alt="Case 1" className="case-card-img w-full h-full object-cover transition-transform duration-500" />
                 <div className="case-card-overlay absolute inset-0 flex flex-col justify-end items-center opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none">
-                  <div className="w-full h-2/3 absolute bottom-0 left-0 bg-gradient-to-t from-black/95 via-black/80 to-transparent z-10" />
+                  <div className="w-full h-full absolute bottom-0 left-0 bg-gradient-to-t from-black/95 via-black/80 to-transparent z-10" />
                   <div className="relative z-20 w-full flex flex-col items-center p-8 animate-none group-hover:animate-slideUpText">
-                    <h3 className="text-2xl font-bold text-white mb-2">Case XPTO</h3>
-                    <p className="text-white text-base mb-2 text-center">Plataforma de gestão que aumentou o faturamento em 300% para o cliente do setor financeiro.</p>
-                    <span className="text-sm text-gray-400 mb-4">+1 milhão de usuários</span>
+                    <h3 className="text-2xl font-bold text-white mb-2">Guia essencial do Fluxo Unificado</h3>
                     <button className="case-cta-btn flex items-center gap-2 border border-white rounded-lg px-5 py-2 mt-2 text-white font-semibold bg-transparent hover:bg-white/10 transition">
                       Ver história
                       <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -996,16 +994,14 @@ function ServicosDesenvolvimentoContent() {
               </div>
             </div>
           </Link>
-          <Link href="/cases/yz" className="case-card-effect-link">
+          <Link href="https://blog.taller.net.br/pensamento-sistemico-na-era-digital-da-teoria-a-pratica/" className="case-card-effect-link">
             <div className="case-card-stroke group">
               <div className="case-card-effect relative rounded-2xl overflow-hidden" style={{height: '320px'}}>
-                <img src="/images/statusreport.png" alt="Case 2" className="case-card-img w-full h-full object-cover transition-transform duration-500" />
+                <img src="/images/postblog2.png" alt="Case 2" className="case-card-img w-full h-full object-cover transition-transform duration-500" />
                 <div className="case-card-overlay absolute inset-0 flex flex-col justify-end items-center opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none">
-                  <div className="w-full h-2/3 absolute bottom-0 left-0 bg-gradient-to-t from-black/95 via-black/80 to-transparent z-10" />
+                  <div className="w-full h-full absolute bottom-0 left-0 bg-gradient-to-t from-black/95 via-black/80 to-transparent z-10" />
                   <div className="relative z-20 w-full flex flex-col items-center p-8 animate-none group-hover:animate-slideUpText">
-                    <h3 className="text-2xl font-bold text-white mb-2">Case YZ</h3>
-                    <p className="text-white text-base mb-2 text-center">App de delivery que revolucionou a experiência do usuário e dobrou a retenção em 6 meses.</p>
-                    <span className="text-sm text-gray-400 mb-4">+500 mil downloads</span>
+                    <h3 className="text-2xl font-bold text-white mb-2">Pensamento Sistêmico na Era Digital: Da Teoria à Prática</h3>
                     <button className="case-cta-btn flex items-center gap-2 border border-white rounded-lg px-5 py-2 mt-2 text-white font-semibold bg-transparent hover:bg-white/10 transition">
                       Ver história
                       <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -1015,16 +1011,14 @@ function ServicosDesenvolvimentoContent() {
               </div>
             </div>
           </Link>
-          <Link href="/cases/zw" className="case-card-effect-link">
+          <Link href="https://blog.taller.net.br/priorizando-o-que-realmente-importa-com-eficiencia-e-eficacia-tallercast-26/" className="case-card-effect-link">
             <div className="case-card-stroke group">
               <div className="case-card-effect relative rounded-2xl overflow-hidden" style={{height: '320px'}}>
-                <img src="/images/statusreport.png" alt="Case 3" className="case-card-img w-full h-full object-cover transition-transform duration-500" />
+                <img src="/images/blogpost3.png" alt="Case 3" className="case-card-img w-full h-full object-cover transition-transform duration-500" />
                 <div className="case-card-overlay absolute inset-0 flex flex-col justify-end items-center opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none">
-                  <div className="w-full h-2/3 absolute bottom-0 left-0 bg-gradient-to-t from-black/95 via-black/80 to-transparent z-10" />
+                  <div className="w-full h-full absolute bottom-0 left-0 bg-gradient-to-t from-black/95 via-black/80 to-transparent z-10" />
                   <div className="relative z-20 w-full flex flex-col items-center p-8 animate-none group-hover:animate-slideUpText">
-                    <h3 className="text-2xl font-bold text-white mb-2">Case ZW</h3>
-                    <p className="text-white text-base mb-2 text-center">Sistema de automação que reduziu custos operacionais em 40% para uma grande indústria.</p>
-                    <span className="text-sm text-gray-400 mb-4">+200 empresas atendidas</span>
+                    <h3 className="text-2xl font-bold text-white mb-2">Priorizando o que realmente importa com eficiência e eficácia – TallerCast #26</h3>
                     <button className="case-cta-btn flex items-center gap-2 border border-white rounded-lg px-5 py-2 mt-2 text-white font-semibold bg-transparent hover:bg-white/10 transition">
                       Ver história
                       <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -1102,6 +1096,13 @@ const testimonials = [
     logo: "/images/clientlogo-alfa.png",
     texto: "Taller é uma empresa altamente qualificada e confiável para desenvolver soluções, estando apta a realizar projetos com sucesso."
   },
+  {
+    nome: "Antônio Mello",
+    cargo: "CEO & Founder",
+    empresa: "Eightware Technology, LLC",
+    logo: "/images/clientlogo-eightware.png",
+    texto: "Ao longo do projeto, cada membro da Taller atuou como parte integrante de nossa própria equipe, demonstrando profundo interesse em compreender nossas regras de negócio e contribuindo ativamente com sugestões e recomendações estratégicas que enriqueceram significativamente o desenvolvimento do produto. Somos genuinamente gratos pela parceria e recomendamos com total confiança os serviços da Taller."
+  },
 ];
 function TestimonialsCarousel() {
   const [idx, setIdx] = useState(0);
@@ -1113,6 +1114,7 @@ function TestimonialsCarousel() {
   const fotos = [
     '/images/matheusspagnuolo.png',
     '/images/matheusfrade.png',
+    '/images/antonio.png',
   ];
   
   return (
@@ -1133,7 +1135,7 @@ function TestimonialsCarousel() {
             <span className="hidden md:block h-8 border-l border-gray-600 mx-2" />
             <div className="text-white/70 text-base md:text-lg whitespace-nowrap">{t.cargo} - {t.empresa}</div>
             <span className="hidden md:block h-8 border-l border-gray-600 mx-2" />
-            <img src={t.logo} alt={t.empresa} className="w-24 h-8 object-contain" style={{filter: 'brightness(0) invert(1)'}} />
+            <img src={t.logo} alt={t.empresa} className="w-24 h-8 object-contain" style={{filter: t.logo.endsWith('.svg') ? 'brightness(0) invert(1)' : 'none'}} />
           </div>
         </div>
       </div>
@@ -1148,4 +1150,4 @@ function TestimonialsCarousel() {
       </div>
     </section>
   );
-} 
+}
